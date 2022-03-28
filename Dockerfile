@@ -5,6 +5,7 @@ RUN cd /etc/yum.repos.d/
 RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
 RUN sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
 
+RUN yum update -y
 # Install Apache
 RUN yum -y install httpd httpd-tools
 
@@ -15,7 +16,6 @@ RUN yum clean all
 #RUN sed -E -i -e 's/DirectoryIndex (.*)$/DirectoryIndex index.php \1/g' /etc/httpd/conf/httpd.conf
 
 RUN systemctl enable httpd.service
-RUN systemctl start httpd.service
 
 EXPOSE 8080
 
