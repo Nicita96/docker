@@ -11,9 +11,7 @@ RUN yum -y install httpd httpd-tools
 
 RUN yum clean all
 
-# Update Apache Configuration
-#RUN sed -E -i -e '/<Directory "\/var\/www\/html">/,/<\/Directory>/s/AllowOverride None/AllowOverride All/' /etc/httpd/conf/httpd.conf
-#RUN sed -E -i -e 's/DirectoryIndex (.*)$/DirectoryIndex index.php \1/g' /etc/httpd/conf/httpd.conf
+RUN echo "<h1>Test Docker</h1>" > /var/www/html/index.html
 
 RUN systemctl enable httpd.service
 
