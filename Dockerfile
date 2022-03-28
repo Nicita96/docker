@@ -8,4 +8,4 @@ RUN yum -y install httpd
 COPY index.html /var/www/html/
 CMD ["-D", "FOREGROUND"]
 ENTRYPOINT ["/usr/sbin/httpd"]
-EXPOSE 8080
+EXPOSE 80
