@@ -1,6 +1,10 @@
 FROM centos:8
 ENV container docker
 
+RUN cd /etc/yum.repos.d/
+RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+RUN sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+
 # Install Apache
 RUN yum -y install httpd httpd-tools
 
